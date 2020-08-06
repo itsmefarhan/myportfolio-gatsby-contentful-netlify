@@ -3,6 +3,7 @@ import Helmet from "../components/head"
 import Header from "../components/header"
 import Main from "../components/main"
 import Skills from "../components/skills"
+import Portfolio from "../components/portfolio"
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Header />
       <Main />
       <Skills />
+      <Portfolio />
     </Fragment>
   )
 }
