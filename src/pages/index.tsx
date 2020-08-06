@@ -4,6 +4,7 @@ import Header from "../components/header"
 import Main from "../components/main"
 import Skills from "../components/skills"
 import Portfolio from "../components/portfolio"
+import AboutPage from "../components/about"
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <Main />
       <Skills />
       <Portfolio />
+      <AboutPage />
     </Fragment>
   )
 }
