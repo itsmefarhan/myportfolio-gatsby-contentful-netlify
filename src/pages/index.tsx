@@ -6,6 +6,7 @@ import Skills from "../components/skills"
 import Portfolio from "../components/portfolio"
 import AboutPage from "../components/about"
 import ContactPage from "../components/contact"
+import Footer from "../components/footer"
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <Portfolio />
       <AboutPage />
       <ContactPage />
+      <Footer />
     </Fragment>
   )
 }

@@ -7,7 +7,7 @@ import { ErrorTwoTone, CheckCircle } from "@material-ui/icons"
 import { Pulse } from "react-awesome-reveal"
 import Helmet from "./head"
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   root: {
     background: "#2d545e",
     // background: "linear-gradient(to top, #e1b382, #c89666, #2d545e, #12343b)",
@@ -21,10 +21,10 @@ const useStyles = makeStyles((theme) => ({
     margin: "10px 0px",
   },
   adjustMargin: {
-    [theme.breakpoints.down('xs')]: {
-      marginTop:'40px'
-    }
-  }
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "40px",
+    },
+  },
 }))
 
 const ContactPage = () => {
@@ -130,7 +130,11 @@ const ContactPage = () => {
               </Grid>
               <Grid item xs={12} sm={2} />
               <Grid item xs={12} sm={4}>
-                <Typography variant="body1" style={{marginBottom:'10%'}} className={classes.adjustMargin}>
+                <Typography
+                  variant="body1"
+                  style={{ marginBottom: "10%" }}
+                  className={classes.adjustMargin}
+                >
                   For queries please fill out the form or you can connect with
                   me via{" "}
                   <a
@@ -149,6 +153,7 @@ const ContactPage = () => {
                     <TwitterIcon />
                   </a>
                 </Typography>
+                {/* Enquiry Form */}
                 <form onSubmit={sendData}>
                   <div className="form-group">
                     <label htmlFor="name">Name</label>
@@ -202,6 +207,7 @@ const ContactPage = () => {
                     />
                   )}
                 </form>
+                {/* End Enquiry Form */}
               </Grid>
             </Grid>
           </Pulse>
