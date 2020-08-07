@@ -45,14 +45,14 @@ const Header = () => {
       icon: <MenuBookIcon className={classes.linksIcon} />,
     },
     {
-      title: "Contact",
-      url: "#contact",
-      icon: <PermContactCalendarIcon className={classes.linksIcon} />,
-    },
-    {
       title: "About",
       url: "#about",
       icon: <InfoIcon className={classes.linksIcon} />,
+    },
+    {
+      title: "Contact",
+      url: "#contact",
+      icon: <PermContactCalendarIcon className={classes.linksIcon} />,
     },
   ]
 

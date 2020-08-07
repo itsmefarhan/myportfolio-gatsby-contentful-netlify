@@ -5,6 +5,7 @@ import Main from "../components/main"
 import Skills from "../components/skills"
 import Portfolio from "../components/portfolio"
 import AboutPage from "../components/about"
+import ContactPage from "../components/contact"
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <Skills />
       <Portfolio />
       <AboutPage />
+      <ContactPage />
     </Fragment>
   )
 }
