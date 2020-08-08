@@ -56,9 +56,9 @@ const AboutPage = () => {
   `)
 
   const { aboutme, imgUrl } = data.allContentfulPortfolio.edges[0].node.aboutme
-  
+
   return (
-    <div id="about" style={{ paddingTop: "50px" }}>      
+    <div id="about" style={{ paddingTop: "50px" }}>
       <Fade cascade={true}>
         <Typography variant="h4" align="center">
           ABOUT ME
@@ -66,7 +66,7 @@ const AboutPage = () => {
 
         <div className={classes.paper}>
           <Grid container>
-            <Grid item xs={2} sm={1}/>
+            <Grid item xs={2} sm={1} />
             <Grid item xs={12} sm={2} style={{ textAlign: "center" }}>
               <img src={imgUrl} alt="Farhan" className={classes.img} />
             </Grid>
@@ -75,7 +75,7 @@ const AboutPage = () => {
                 {aboutme}
               </Typography>
             </Grid>
-            <Grid item xs={2} sm={1}/>
+            <Grid item xs={2} sm={1} />
           </Grid>
         </div>
       </Fade>

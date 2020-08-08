@@ -9,7 +9,6 @@ import { Pulse } from "react-awesome-reveal"
 const useStyles = makeStyles(theme => ({
   root: {
     background: "#2d545e",
-    // background: "linear-gradient(to top, #e1b382, #c89666, #2d545e, #12343b)",
     padding: "50px 0px",
     color: "white",
   },

@@ -5,7 +5,6 @@ import { makeStyles } from "@material-ui/core/styles"
 const useStyles = makeStyles(() => ({
   myloader: {
     background: "black",
-    // background: "#5bc0de",
     height: "100vh",
     display: "flex",
     justifyContent: "center",

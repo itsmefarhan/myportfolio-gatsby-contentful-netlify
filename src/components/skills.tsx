@@ -8,13 +8,13 @@ const useStyles = makeStyles(theme => ({
   grid: {
     display: "flex",
     justifyContent: "space-between",
-    marginTop:'20px',
+    marginTop: "20px",
     [theme.breakpoints.down("sm")]: {
       display: "flex",
-      justifyContent: "center",      
+      justifyContent: "center",
     },
   },
-  paper: {    
+  paper: {
     textAlign: "center",
     paddingTop: "10px",
     paddingBottom: "10px",
@@ -52,21 +52,12 @@ const Skills = () => {
   return (
     <div style={{ padding: "50px 0px" }} id="skills">
       <Fade cascade={true} direction="top">
-        <Typography
-          variant="h4"
-          align="center"          
-        >
+        <Typography variant="h4" align="center">
           SKILLS
         </Typography>
         <Grid container>
           <Grid item xs={1} sm={1} />
-          <Grid
-            item
-            container
-            xs={10}
-            sm={10}            
-            className={classes.grid}
-          >
+          <Grid item container xs={10} sm={10} className={classes.grid}>
             {data.allContentfulPortfolio.edges[0].node.skills.map(
               (skill: Props) => (
                 <Grid item key={skill.title}>
