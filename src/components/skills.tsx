@@ -53,7 +53,7 @@ const Skills = () => {
     <div style={{ padding: "50px 0px" }} id="skills">
       <Fade cascade={true} direction="top">
         <Typography
-          variant="h3"
+          variant="h4"
           align="center"          
         >
           SKILLS
@@ -64,8 +64,7 @@ const Skills = () => {
             item
             container
             xs={10}
-            sm={10}
-            // spacing={10}
+            sm={10}            
             className={classes.grid}
           >
             {data.allContentfulPortfolio.edges[0].node.skills.map(

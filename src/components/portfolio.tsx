@@ -73,7 +73,7 @@ const Portfolio = () => {
   return (
     <div id="portfolio" className={classes.root}>
       <Pulse cascade={true}>
-        <Typography variant="h3" align="center">
+        <Typography variant="h4" align="center">
           RECENT PROJECTS
         </Typography>
         <Grid container>
@@ -113,6 +113,7 @@ const Portfolio = () => {
                                   href={project.projectUrl}
                                   target="_blank"
                                   className="text-dark"
+                                  rel="noreferrer"
                                 >
                                   <VisibilityIcon
                                     fontSize="large"
@@ -132,6 +133,7 @@ const Portfolio = () => {
                                   href={project.githubUrl}
                                   target="_blank"
                                   className="text-dark"
+                                  rel="noreferrer"
                                 >
                                   <GitHubIcon fontSize="large" />
                                 </a>

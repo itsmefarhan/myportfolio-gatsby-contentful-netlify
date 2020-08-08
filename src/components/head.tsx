@@ -12,11 +12,17 @@ const Head = ({ title }: Props) => {
       site {
         siteMetadata {
           title
+          description
         }
       }
     }
   `)
-  return <Helmet title={`${title} | ${data.site.siteMetadata.title}`} />
+  return (
+    <Helmet title={`${title} | ${data.site.siteMetadata.title}`}>
+      <meta name="description" content={data.site.siteMetadata.description} />
+      <html lang="en" />
+    </Helmet>
+  )
 }
 
 export default Head

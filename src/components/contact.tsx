@@ -5,7 +5,6 @@ import FacebookIcon from "@material-ui/icons/Facebook"
 import TwitterIcon from "@material-ui/icons/Twitter"
 import { ErrorTwoTone, CheckCircle } from "@material-ui/icons"
 import { Pulse } from "react-awesome-reveal"
-import Helmet from "./head"
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -71,24 +70,23 @@ const ContactPage = () => {
 
   return (
     <div id="contact" className={classes.root}>
-      <Helmet title="Contact" />
-
       <Grid container>
         <Grid item xs={1} sm={1} />
         <Grid item xs={10} sm={10}>
           <Pulse cascade={true}>
-            <Typography variant="h3" align="center">
-              Contact
+            <Typography variant="h4" align="center">
+              CONTACT
             </Typography>
             <Grid container className={classes.typo}>
               <Grid item xs={12} sm={6}>
                 {/* Map */}
                 <div style={{ width: "100%" }}>
                   <iframe
+                    title="location"
                     width="100%"
                     height="450"
                     frameBorder="0"
-                    scrolling="no"
+                    scrolling="auto"
                     marginHeight={0}
                     marginWidth={0}
                     src="https://maps.google.com/maps?hl=en&amp;q=Karachi,%20Pakistan+(Farhan%20Farooq)&amp;t=&amp;z=6&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
@@ -159,6 +157,7 @@ const ContactPage = () => {
                     <label htmlFor="name">Name</label>
                     <input
                       type="text"
+                      id="name"
                       name="name"
                       className="form-control"
                       value={name}
@@ -169,6 +168,7 @@ const ContactPage = () => {
                     <label htmlFor="email">Email</label>
                     <input
                       type="text"
+                      id="email"
                       name="email"
                       className="form-control"
                       value={email}
@@ -179,6 +179,7 @@ const ContactPage = () => {
                     <label htmlFor="message">Message</label>
                     <textarea
                       rows={3}
+                      id="message"
                       name="message"
                       className="form-control"
                       value={message}

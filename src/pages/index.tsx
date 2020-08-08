@@ -1,4 +1,5 @@
-import React, { Fragment } from "react"
+import React, { Fragment, useState, useEffect } from "react"
+import Loader from "../components/loader"
 import Helmet from "../components/head"
 import Header from "../components/header"
 import Main from "../components/main"
@@ -9,7 +10,15 @@ import ContactPage from "../components/contact"
 import Footer from "../components/footer"
 
 const Home = () => {
-  return (
+  const [render, setRender] = useState(false)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setRender(true)
+    }, 1000)
+  }, [])
+
+  return render ? (
     <Fragment>
       <Helmet title="Home" />
       <Header />
@@ -20,6 +29,8 @@ const Home = () => {
       <ContactPage />
       <Footer />
     </Fragment>
+  ) : (
+    <Loader />
   )
 }
 

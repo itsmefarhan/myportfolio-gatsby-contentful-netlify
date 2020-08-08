@@ -3,7 +3,6 @@ import { useStaticQuery, graphql } from "gatsby"
 import { Typography, Grid } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import { Fade } from "react-awesome-reveal"
-import Helmet from "./head"
 
 const useStyles = makeStyles(theme => ({
   typo: {
@@ -55,12 +54,13 @@ const AboutPage = () => {
       }
     }
   `)
+
   const { aboutme, imgUrl } = data.allContentfulPortfolio.edges[0].node.aboutme
+  
   return (
-    <div id="about" style={{ paddingTop: "50px" }}>
-      <Helmet title="About" />
+    <div id="about" style={{ paddingTop: "50px" }}>      
       <Fade cascade={true}>
-        <Typography variant="h3" align="center">
+        <Typography variant="h4" align="center">
           ABOUT ME
         </Typography>
 

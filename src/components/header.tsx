@@ -99,7 +99,11 @@ const Header = () => {
                   <Hidden smDown>
                     <div>{item.icon}</div>
                   </Hidden>
-                  <a className="nav-link" href={item.url}>
+                  <a
+                    className="nav-link text-white"
+                    href={item.url}
+                    style={{ letterSpacing: 1 }}
+                  >
                     {item.title}
                   </a>
                 </div>

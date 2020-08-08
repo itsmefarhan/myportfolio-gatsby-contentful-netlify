@@ -4,6 +4,8 @@ module.exports = {
   siteMetadata: {
     title: "Farhan Farooq",
     author: "Farhan Farooq",
+    description: "Farhan Farooq - Web Developer Portfolio",
+    siteUrl: "https://farhan.com",
   },
   plugins: [
     "gatsby-plugin-react-helmet",
@@ -24,6 +26,8 @@ module.exports = {
     "gatsby-plugin-sharp",
     "gatsby-plugin-typescript",
     "gatsby-transformer-remark",
+    "gatsby-plugin-sitemap",
+    "gatsby-plugin-robots-txt",
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
