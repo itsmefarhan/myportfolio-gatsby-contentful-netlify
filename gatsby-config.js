@@ -5,7 +5,7 @@ module.exports = {
     title: "Farhan Farooq",
     author: "Farhan Farooq",
     description: "Farhan Farooq - Web Developer Portfolio",
-    siteUrl: "https://farhan.com",
+    siteUrl: "https://farhanfarooq.netlify.app",
   },
   plugins: [
     "gatsby-plugin-react-helmet",

@@ -1,6 +1,14 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import { Typography, Grid, Paper, Tooltip } from "@material-ui/core"
+import {
+  Typography,
+  Grid,
+  Paper,
+  Tooltip,
+  Tabs,
+  Tab,
+  useMediaQuery,
+} from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import VisibilityIcon from "@material-ui/icons/Visibility"
 import GitHubIcon from "@material-ui/icons/GitHub"
@@ -12,6 +20,12 @@ const useStyles = makeStyles(theme => ({
     background: "#2d545e",
     padding: "50px 0px",
     color: "white",
+  },
+  tabs: {
+    display: "flex",
+    justifyContent: "center",
+    flexWrap: "wrap",
+    marginTop: "20px",
   },
   paperContainer: {
     justifyContent: "space-between",
@@ -42,6 +56,9 @@ const useStyles = makeStyles(theme => ({
 
 const Portfolio = () => {
   const classes = useStyles()
+  const [value, setValue] = React.useState(0)
+
+  const matches = useMediaQuery("(max-width:480px)")
 
   const data = useStaticQuery(graphql`
     query {
@@ -58,93 +75,155 @@ const Portfolio = () => {
           }
         }
       }
+      allContentfulProjects {
+        edges {
+          node {
+            title
+            description
+            url
+            githubUrl
+            projectUrl
+            categories
+          }
+        }
+      }
     }
   `)
 
   interface Props {
-    title: string
-    desc: string
-    url: string
-    githubUrl: string
-    projectUrl: string
+    node: {
+      title: string
+      description: string
+      url: string
+      githubUrl: string
+      projectUrl: string
+      categories: any
+    }
   }
 
+  // Render tabs based on categories
+  const renderTabs = () => {
+    // Get categories
+    let getCat = data.allContentfulProjects.edges.map(
+      (edge: Props) => edge.node.categories
+    )
+    // Merge categories into single array
+    let accCat = getCat.reduce((acc: [], it: string) => [...acc, ...it], [])
+    // Get unique values from categories
+    let setLabel = new Set(accCat)
+    // Convert unique set into array
+    let convertSet = Array.from(setLabel)
+
+    return convertSet.map((a: any) => <Tab label={a} value={a} key={a} />)
+  }
+
+  // Render portfolio projects
+  const renderData = (
+    title: string,
+    description: string,
+    url: string,
+    projectUrl: string,
+    githubUrl: string
+  ) => (
+    <Grid item>
+      <Tooltip
+        title={<span className={classes.tooltipTitle}>{description}</span>}
+        placement="top"
+      >
+        <Paper className={classes.paper}>
+          <div className="imgcontainer">
+            <img src={url} alt={title} className={`${classes.img} imgcustom`} />
+            <div className="middlecustom">
+              <div className="textcustom">
+                <Tooltip
+                  title={
+                    <span className={classes.tooltipTitle}>View Demo</span>
+                  }
+                  placement="top"
+                >
+                  <a
+                    href={projectUrl}
+                    target="_blank"
+                    className="text-dark"
+                    rel="noreferrer"
+                  >
+                    <VisibilityIcon
+                      fontSize="large"
+                      style={{ marginRight: "10px" }}
+                    />
+                  </a>
+                </Tooltip>
+                <Tooltip
+                  title={
+                    <span className={classes.tooltipTitle}>
+                      View source code
+                    </span>
+                  }
+                  placement="top"
+                >
+                  <a
+                    href={githubUrl}
+                    target="_blank"
+                    className="text-dark"
+                    rel="noreferrer"
+                  >
+                    <GitHubIcon fontSize="large" />
+                  </a>
+                </Tooltip>
+              </div>
+            </div>
+          </div>
+        </Paper>
+      </Tooltip>
+    </Grid>
+  )
   return (
     <div id="portfolio" className={classes.root}>
       <Pulse cascade={true}>
         <Typography variant="h4" align="center">
           RECENT PROJECTS
         </Typography>
+        <div className={classes.tabs}>
+          <Tabs
+            value={value}
+            onChange={(_, val) => setValue(val)}
+            orientation={matches ? "vertical" : "horizontal"}
+          >
+            <Tab label="All" />
+            {renderTabs()}
+          </Tabs>
+        </div>
         <Grid container>
           <Grid item xs={1} sm={1} />
 
           <Grid item xs={10} sm={10}>
             <Grid container className={classes.paperContainer} spacing={1}>
-              {data.allContentfulPortfolio.edges[0].node.projects.map(
-                (project: Props) => (
-                  <Grid item key={project.title}>
-                    <Tooltip
-                      title={
-                        <span className={classes.tooltipTitle}>
-                          {project.desc}
-                        </span>
-                      }
-                      placement="top"
-                    >
-                      <Paper className={classes.paper}>
-                        <div className="imgcontainer">
-                          <img
-                            src={project.url}
-                            alt={project.title}
-                            className={`${classes.img} imgcustom`}
-                          />
-                          <div className="middlecustom">
-                            <div className="textcustom">
-                              <Tooltip
-                                title={
-                                  <span className={classes.tooltipTitle}>
-                                    View Demo
-                                  </span>
-                                }
-                                placement="top"
-                              >
-                                <a
-                                  href={project.projectUrl}
-                                  target="_blank"
-                                  className="text-dark"
-                                  rel="noreferrer"
-                                >
-                                  <VisibilityIcon
-                                    fontSize="large"
-                                    style={{ marginRight: "10px" }}
-                                  />
-                                </a>
-                              </Tooltip>
-                              <Tooltip
-                                title={
-                                  <span className={classes.tooltipTitle}>
-                                    View source code
-                                  </span>
-                                }
-                                placement="top"
-                              >
-                                <a
-                                  href={project.githubUrl}
-                                  target="_blank"
-                                  className="text-dark"
-                                  rel="noreferrer"
-                                >
-                                  <GitHubIcon fontSize="large" />
-                                </a>
-                              </Tooltip>
-                            </div>
-                          </div>
-                        </div>
-                      </Paper>
-                    </Tooltip>
-                  </Grid>
+              {data.allContentfulProjects.edges.map((project: Props) => {
+                let cond = project.node.categories.find(
+                  (cat: string) => cat === value.toString()
                 )
-              )}
+                return (
+                  <>
+                    {cond &&
+                      renderData(
+                        project.node.title,
+                        project.node.description,
+                        project.node.url,
+                        project.node.projectUrl,
+                        project.node.githubUrl
+                      )}
+
+                    {value === 0 &&
+                      renderData(
+                        project.node.title,
+                        project.node.description,
+                        project.node.url,
+                        project.node.projectUrl,
+                        project.node.githubUrl
+                      )}
+                  </>
+                )
+              })}
             </Grid>
           </Grid>
           <Grid item xs={1} sm={1} />
