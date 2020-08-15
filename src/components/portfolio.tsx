@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import {
   Typography,
@@ -114,7 +114,9 @@ const Portfolio = () => {
     // Convert unique set into array
     let convertSet = Array.from(setLabel)
 
-    return convertSet.map((a: any) => <Tab label={a} value={a} key={a} />)
+    return convertSet.map((a: any) => (
+      <Tab label={a} value={a} key={a} style={{ fontWeight: "bold" }} />
+    ))
   }
 
   // Render portfolio projects
@@ -189,7 +191,7 @@ const Portfolio = () => {
             onChange={(_, val) => setValue(val)}
             orientation={matches ? "vertical" : "horizontal"}
           >
-            <Tab label="All" />
+            <Tab label="All" style={{ fontWeight: "bold" }} />
             {renderTabs()}
           </Tabs>
         </div>
@@ -203,7 +205,7 @@ const Portfolio = () => {
                   (cat: string) => cat === value.toString()
                 )
                 return (
-                  <>
+                  <Fragment key={project.node.title}>
                     {cond &&
                       renderData(
                         project.node.title,
@@ -221,7 +223,7 @@ const Portfolio = () => {
                         project.node.projectUrl,
                         project.node.githubUrl
                       )}
-                  </>
+                  </Fragment>
                 )
               })}
             </Grid>
